@@ -28,6 +28,7 @@ class MainActivity : ComponentActivity() {
                     Greeting(
                         name = systemInfo.getInfo(),
                         deviceModel = systemInfo.getDeviceModel(),
+                        osVersion = systemInfo.getOsVersion(),
                         modifier = Modifier
                             .padding(innerPadding)
                             .fillMaxSize()
@@ -39,11 +40,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, deviceModel: String, modifier: Modifier = Modifier) {
+fun Greeting(name: String, deviceModel: String, osVersion: String, modifier: Modifier = Modifier) {
     Box(modifier = modifier, contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(text = name)
             Text(text = "Device: $deviceModel")
+            Text(text = "OS: $osVersion")
         }
     }
 }
@@ -52,6 +54,6 @@ fun Greeting(name: String, deviceModel: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     KMP_template_androidTheme {
-        Greeting("Android", "Preview device")
+        Greeting("Android", "Preview device", "Preview OS")
     }
 }
